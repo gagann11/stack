@@ -1,0 +1,85 @@
+#include<stdio.h>
+#include<string.h>
+
+//int stack
+int stack[100],choice,n,top,i,x;
+void push();
+void pop();
+void display();
+
+int main()
+{
+ top=-1;  //initializing top=-1;
+ printf("\n enter the size of the stack:");
+ scanf("%d",&n);
+ printf("\n 1.push 2.pop 3.display 4.exit \n");
+ do
+  {
+   printf("\n enter the choice");
+   scanf("%d",&choice);
+   switch(choice)      // switch case is used to take the choice
+   {
+    case 1:
+          push();  //calling push fucntion
+          break;
+   
+   case 2:
+         pop();   //calling pop function
+         break;                
+   case 3:
+         display(); //calling display function
+         break;      
+   case 4:
+         printf("\n EXIT");
+         break;
+   default:
+         printf("enter a valid choice");
+         
+   }
+  }
+  while(choice!=4);
+  return 0;
+ } 
+ //function for entering the values in the stack      
+ void push()
+ {
+  if(top>=n-1) // this line checks whether topis greater than size of the array if yes then stack is       overflow 
+  {
+   printf("\n STACKOVERFLOW");
+  }
+ else
+  {
+   printf("enter a value to be pushed:");
+   scanf("%d",&x);
+   top++;
+   stack[top]=x;
+  }
+ } 
+ //function for removing element from the stack
+ void pop()
+ {
+ if(top<=-1) //this line check whether topis less than -1 if yes then the stack is underflow
+  {
+   printf("\nSTACKUNDERFLOW");
+  }
+else
+  {
+   printf("the poped element is %d",stack[top]);
+   top--;
+  }
+ }
+ //function for displaying values from the stack
+ void display()
+ {
+  if(top>=0) //iftopis greater than or equal to0 we print the stack values
+  {
+   printf("\nthe elements of the stack are:");
+   for(i=top;i>0;i--) //loop to display the elements
+   printf("\n %d",stack[i]);
+   printf("\n enter the next choice");
+  }
+ else
+  {
+   printf("\n the stack is empty");
+  }  
+ } 
